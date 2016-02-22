@@ -1,0 +1,3 @@
+/node_modules
+/dist/*
+/demo/demo_bundle.js

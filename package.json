@@ -1,0 +1,19 @@
+{
+  "name": "angular-prosemirror",
+  "version": "1.0.0",
+  "description": "An angular wrapper for prosemirror",
+  "main": "index.js",
+  "scripts": {
+    "demo": "browserify ./demo/demo.js --outfile ./demo/demo_bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WebPLU",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "http-server": "^0.9.0"
+  },
+  "dependencies": {
+    "prosemirror": "^0.3.0"
+  }
+}
