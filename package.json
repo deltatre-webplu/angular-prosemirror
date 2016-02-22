@@ -4,16 +4,23 @@
   "description": "An angular wrapper for prosemirror",
   "main": "index.js",
   "scripts": {
-    "demo": "browserify ./demo/demo.js --outfile ./demo/demo_bundle.js",
+    "build-demo": "watchify ./demo/demo.js --outfile ./demo/demo_bundle.js",
+    "demo": "http-server ./demo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "WebPLU",
   "license": "MIT",
   "devDependencies": {
     "browserify": "^13.0.0",
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "watchify": "^3.7.0"
   },
   "dependencies": {
+    "angular": "^1.5.0",
     "prosemirror": "^0.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deltatre-webplu/angular-prosemirror.git"
   }
 }
