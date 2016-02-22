@@ -7,6 +7,36 @@ require("../node_modules/prosemirror/dist/markdown");
 var angular = require('angular');
 require("angular-elastic");
 
+var cssNode = null;
+
+function ensureCSSAdded() {
+  if (!cssNode) {
+    cssNode = document.createElement("style")
+    cssNode.textContent = `/* Markdown Prosemirror CSS */
+    markdown-prosemirror {
+      display: flex;
+      flex-direction: column;
+    }
+
+    markdown-prosemirror prosemirror {
+      flex-grow: 1;
+    }
+
+    markdown-prosemirror .MarkDown {
+      flex-grow: 1;
+    }
+
+    markdown-prosemirror .markdown-prosemirror-toolbar {
+      display: flex;
+    }
+    .markdown-prosemirror-toolbar .filler {
+      flex-grow: 1;
+    }
+    `;
+    document.head.insertBefore(cssNode, document.head.firstChild)
+  }
+}
+
 angular.module('markdownProsemirror', ['monospaced.elastic'])
   .directive('markdownProsemirror', function() {
     return {
@@ -18,7 +48,9 @@ angular.module('markdownProsemirror', ['monospaced.elastic'])
         model: '=?ngModel',
         modelOptions: '=?ngModelOptions'
       },
-      controller: function() {},
+      controller: function() {
+        ensureCSSAdded();
+      },
       controllerAs: 'ctrl',
       template: `<prosemirror ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="!ctrl.showMarkdown"></prosemirror>
       <textarea class="MarkDown" msd-elastic ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="ctrl.showMarkdown"></textarea>

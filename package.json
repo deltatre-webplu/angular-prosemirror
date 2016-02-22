@@ -6,12 +6,19 @@
   "scripts": {
     "build-demo": "watchify ./demo/demo.js --outfile ./demo/demo_bundle.js",
     "demo": "http-server ./demo",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "babel -d dist src",
+    "build-dist": "browserify ./src/markdownProsemirror.js --outfile ./dist/markdownProsemirror_bundle.js"
   },
   "author": "WebPLU",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-register": "^6.5.2",
     "browserify": "^13.0.0",
+    "browserify-shim": "^3.8.12",
     "http-server": "^0.9.0",
     "watchify": "^3.7.0"
   },
@@ -19,6 +26,14 @@
     "angular": "^1.5.0",
     "angular-elastic": "^2.5.1",
     "prosemirror": "^0.3.0"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "angular": "global:angular"
   },
   "repository": {
     "type": "git",

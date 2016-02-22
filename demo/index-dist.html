@@ -14,4 +14,13 @@
 </div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-<script type="text/javascript" src="demo_bundle.js"></script>
+<script type="text/javascript" src="../dist/markdownProsemirror_bundle.js"></script>
+<script type="text/javascript">
+angular.module('demo', ['markdownProsemirror'])
+  .controller('demoController', function() {
+
+    var vm = this;
+    vm.showMarkdown = false;
+    vm.content = 'my **markdown** content';
+  });
+</script>
