@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-elastic": "^2.5.1",
     "prosemirror": "^0.3.0"
   },
   "repository": {

@@ -4,11 +4,14 @@
 <title>ProseMirror demo page</title>
 <link rel=stylesheet href="demo.css">
 
-<h1>Angular-ProseMirror demo page</h1>
+<h1>Markdown-ProseMirror demo page</h1>
 
 <div ng-app="demo">
-  <angular-prosemirror>
-  </angular-prosemirror>
+  <div ng-controller="demoController as ctrl">
+    <markdown-prosemirror ng-model="ctrl.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></markdown-prosemirror>
+    <pre>{{ctrl.content}}</pre>
+  </div>
+
 </div>
 
 <script type="text/javascript" src="demo_bundle.js"></script>
