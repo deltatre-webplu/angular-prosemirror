@@ -10,6 +10,7 @@
     <markdown-prosemirror ng-model="ctrl.content"
       ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }"
       show-markdown="ctrl.showMarkdown"
+      prosemirror-options="ctrl.options"
       ng-change="ctrl.change()"></markdown-prosemirror>
     <pre>{{ctrl.content}}</pre>
 

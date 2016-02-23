@@ -7,7 +7,10 @@
 
 <div ng-app="demo">
   <div ng-controller="demoController as ctrl">
-    <markdown-prosemirror ng-model="ctrl.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></markdown-prosemirror>
+    <markdown-prosemirror ng-model="ctrl.content"
+        ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }"
+        prosemirror-options="ctrl.options"
+        how-markdown="ctrl.showMarkdown"></markdown-prosemirror>
     <pre>{{ctrl.content}}</pre>
   </div>
 
@@ -22,5 +25,14 @@ angular.module('demo', ['markdownProsemirror'])
     var vm = this;
     vm.showMarkdown = false;
     vm.content = 'my **markdown** content';
+    vm.options = {
+      tooltipMenu: {
+        selectedBlockMenu: true
+      },
+      menuBar: {
+        float: true
+      }
+    };
+    
   });
 </script>

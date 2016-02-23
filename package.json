@@ -8,7 +8,7 @@
     "demo": "http-server ./demo",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dist": "babel -d dist src",
-    "build-dist": "browserify ./src/markdownProsemirror.js --outfile ./dist/markdownProsemirror_bundle.js"
+    "build-dist": "browserify ./src/main.js --outfile ./dist/markdownProsemirror_bundle.js"
   },
   "author": "WebPLU",
   "license": "MIT",

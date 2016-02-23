@@ -1,5 +1,5 @@
 var angular = require('angular');
-require("../src/markdownProsemirror");
+require("../src/main");
 
 angular.module('demo', ['markdownProsemirror'])
   .controller('demoController', function() {
@@ -7,7 +7,15 @@ angular.module('demo', ['markdownProsemirror'])
     var vm = this;
     vm.showMarkdown = false;
     vm.content = 'my **markdown** content ciao';
-
+    vm.options = {
+      tooltipMenu: {
+        selectedBlockMenu: true
+      },
+      menuBar: {
+        float: true
+      }
+    };
+    
     vm.changeList = [];
 
     vm.change = function() {
