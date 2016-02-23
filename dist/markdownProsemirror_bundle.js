@@ -21721,20 +21721,20 @@ module.exports.Z   = require('./categories/Z/regex');
 module.exports=/[\0-\uD7FF\uDC00-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF]/
 },{}],126:[function(require,module,exports){
 (function (global){
-var ProseMirror = require("../node_modules/prosemirror/dist/edit/main").ProseMirror;
-var elt = require("../node_modules/prosemirror/dist/dom").elt;
-require("../node_modules/prosemirror/dist/menu/tooltipmenu");
-require("../node_modules/prosemirror/dist/menu/menubar");
-require("../node_modules/prosemirror/dist/markdown");
+var ProseMirror = require('../node_modules/prosemirror/dist/edit/main').ProseMirror;
+var elt = require('../node_modules/prosemirror/dist/dom').elt;
+require('../node_modules/prosemirror/dist/menu/tooltipmenu');
+require('../node_modules/prosemirror/dist/menu/menubar');
+require('../node_modules/prosemirror/dist/markdown');
 
 var angular = (typeof window !== "undefined" ? window['angular'] : typeof global !== "undefined" ? global['angular'] : null);
-require("angular-elastic");
+require('angular-elastic');
 
 var cssNode = null;
 
 function ensureCSSAdded() {
   if (!cssNode) {
-    cssNode = document.createElement("style")
+    cssNode = document.createElement('style');
     cssNode.textContent = `/* Markdown Prosemirror CSS */
     markdown-prosemirror {
       display: flex;
@@ -21756,66 +21756,77 @@ function ensureCSSAdded() {
       flex-grow: 1;
     }
     `;
-    document.head.insertBefore(cssNode, document.head.firstChild)
+    document.head.insertBefore(cssNode, document.head.firstChild);
   }
 }
 
 angular.module('markdownProsemirror', ['monospaced.elastic'])
-  .directive('markdownProsemirror', function() {
+
+.directive('markdownProsemirror', [
+  '$timeout',
+  function($timeout) {
     return {
-      restrict: "E",
+      restrict: 'E',
       require: '?ngModel',
-      scope: {},
+      scope: {
+        ngChange: '&'
+      },
       bindToController: {
         showMarkdown: '=?',
         model: '=?ngModel',
         modelOptions: '=?ngModelOptions'
       },
-      controller: function() {
+      controller: function($scope) {
         ensureCSSAdded();
+        var ctrl = this;
+        ctrl.change = function() {
+          $timeout($scope.ngChange, 0);
+        };
       },
       controllerAs: 'ctrl',
-      template: `<prosemirror ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="!ctrl.showMarkdown"></prosemirror>
-      <textarea class="MarkDown" msd-elastic ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="ctrl.showMarkdown"></textarea>
+      template: `<prosemirror ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="!ctrl.showMarkdown" ng-change="ctrl.change()"></prosemirror>
+      <textarea class="MarkDown" msd-elastic ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="ctrl.showMarkdown" ng-change="ctrl.change()"></textarea>
       <div class="markdown-prosemirror-toolbar"><span class="filler"></span><button ng-click="ctrl.showMarkdown=!ctrl.showMarkdown">{{ctrl.showMarkdown ? 'toHTML' : 'toMARKDOWN'}}</button></div>`
     };
-  })
-  .directive("prosemirror", function() {
-    return {
-      restrict: "E",
-      require: '?ngModel',
-      link: function(scope, element, attrs, ngModel) {
+  }
+])
 
-        if (!ngModel) return; // do nothing if no ng-model
+.directive('prosemirror', function() {
+  return {
+    restrict: 'E',
+    require: '?ngModel',
+    link: function(scope, element, attrs, ngModel) {
 
-        var place = element[0];
-        var editor = new ProseMirror({
-          place: place,
-          tooltipMenu: {
-            selectedBlockMenu: true
-          },
-          menuBar: {
-            float: true
-          },
-          doc: '',
-          docFormat: "markdown"
-        });
+      if (!ngModel) return; // do nothing if no ng-model
 
-        editor.on("change", function() {
-          ngModel.$setViewValue(editor.getContent("markdown"), "change");
-        });
-        editor.on("blur", function() {
-          ngModel.$setViewValue(editor.getContent("markdown"), "blur");
-        });
+      var place = element[0];
+      var editor = new ProseMirror({
+        place: place,
+        tooltipMenu: {
+          selectedBlockMenu: true
+        },
+        menuBar: {
+          float: true
+        },
+        doc: '',
+        docFormat: 'markdown'
+      });
 
-        ngModel.$render = function() {
-          editor.setContent(ngModel.$viewValue, 'markdown');
-        };
+      editor.on('change', function() {
+        ngModel.$setViewValue(editor.getContent('markdown'), 'change');
+      });
+      editor.on('blur', function() {
+        ngModel.$setViewValue(editor.getContent('markdown'), 'blur');
+      });
 
-      }
+      ngModel.$render = function() {
+        editor.setContent(ngModel.$viewValue, 'markdown');
+      };
 
-    };
-  });
+    }
+
+  };
+});
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../node_modules/prosemirror/dist/dom":62,"../node_modules/prosemirror/dist/edit/main":74,"../node_modules/prosemirror/dist/markdown":86,"../node_modules/prosemirror/dist/menu/menubar":90,"../node_modules/prosemirror/dist/menu/tooltipmenu":91,"angular-elastic":1}]},{},[126]);
