@@ -1,17 +1,17 @@
-var ProseMirror = require("../node_modules/prosemirror/dist/edit/main").ProseMirror;
-var elt = require("../node_modules/prosemirror/dist/dom").elt;
-require("../node_modules/prosemirror/dist/menu/tooltipmenu");
-require("../node_modules/prosemirror/dist/menu/menubar");
-require("../node_modules/prosemirror/dist/markdown");
+var ProseMirror = require('../node_modules/prosemirror/dist/edit/main').ProseMirror;
+var elt = require('../node_modules/prosemirror/dist/dom').elt;
+require('../node_modules/prosemirror/dist/menu/tooltipmenu');
+require('../node_modules/prosemirror/dist/menu/menubar');
+require('../node_modules/prosemirror/dist/markdown');
 
 var angular = require('angular');
-require("angular-elastic");
+require('angular-elastic');
 
 var cssNode = null;
 
 function ensureCSSAdded() {
   if (!cssNode) {
-    cssNode = document.createElement("style");
+    cssNode = document.createElement('style');
     cssNode.textContent = `/* Markdown Prosemirror CSS */
     markdown-prosemirror {
       display: flex;
@@ -43,20 +43,21 @@ angular.module('markdownProsemirror', ['monospaced.elastic'])
   '$timeout',
   function($timeout) {
     return {
-      restrict: "E",
+      restrict: 'E',
       require: '?ngModel',
-      scope: {},
+      scope: {
+        ngChange: '&'
+      },
       bindToController: {
         showMarkdown: '=?',
         model: '=?ngModel',
-        modelOptions: '=?ngModelOptions',
-        ngChange: '&'
+        modelOptions: '=?ngModelOptions'
       },
-      controller: function() {
+      controller: function($scope) {
         ensureCSSAdded();
         var ctrl = this;
         ctrl.change = function() {
-          $timeout(ctrl.ngChange, 0);
+          $timeout($scope.ngChange, 0);
         };
       },
       controllerAs: 'ctrl',
@@ -67,9 +68,9 @@ angular.module('markdownProsemirror', ['monospaced.elastic'])
   }
 ])
 
-.directive("prosemirror", function() {
+.directive('prosemirror', function() {
   return {
-    restrict: "E",
+    restrict: 'E',
     require: '?ngModel',
     link: function(scope, element, attrs, ngModel) {
 
@@ -85,14 +86,14 @@ angular.module('markdownProsemirror', ['monospaced.elastic'])
           float: true
         },
         doc: '',
-        docFormat: "markdown"
+        docFormat: 'markdown'
       });
 
-      editor.on("change", function() {
-        ngModel.$setViewValue(editor.getContent("markdown"), "change");
+      editor.on('change', function() {
+        ngModel.$setViewValue(editor.getContent('markdown'), 'change');
       });
-      editor.on("blur", function() {
-        ngModel.$setViewValue(editor.getContent("markdown"), "blur");
+      editor.on('blur', function() {
+        ngModel.$setViewValue(editor.getContent('markdown'), 'blur');
       });
 
       ngModel.$render = function() {
