@@ -6,5 +6,13 @@ angular.module('demo', ['markdownProsemirror'])
 
     var vm = this;
     vm.showMarkdown = false;
-    vm.content = 'my **markdown** content';
+    vm.content = 'my **markdown** content ciao';
+
+    vm.changeList = [];
+
+    vm.change = function(astring, avalue) {
+      console.log(vm.content, astring, avalue);
+      vm.changeList.push('new change');
+    };
+
   });
