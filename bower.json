@@ -15,7 +15,7 @@
   "moduleType": [
     "globals"
   ],
-  "homepage": "https://github.com/deltatre-webplu/angular-prosemirror",
+  "homepage": "https://github.com/deltatre-webplu/proNg-mirror",
   "ignore": [
     "**/.*",
     "node_modules",
