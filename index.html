@@ -34,7 +34,7 @@
         </div>
       </div><!-- end banner -->
 
-    <div class="wrapper">
+    <div class="wrapper" ng-app="demo">
       <nav>
         <ul></ul>
       </nav>
@@ -42,15 +42,19 @@
         <h3>
 <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo</h3>
 
-        <p>Below an angular demo of proNg-mirror</p>
-        
-        <div ng-app="demo">
-          <div ng-controller="demoController as ctrl">
-            <markdown-prosemirror ng-model="ctrl.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></markdown-prosemirror>
-            <pre>{{ctrl.content}}</pre>
-          </div>
-        
+        <p>Prosemirror directive</p>
+        <div ng-controller="demoController as ctrl">
+          <prosemirror ng-model="ctrl.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></prosemirror>
         </div>
+
+
+        <p>Markdown Prosemirror directive</p>
+        <div ng-controller="demoController as ctrl">
+          <markdown-prosemirror ng-model="ctrl.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></markdown-prosemirror>
+        </div>
+
+        <p>Markdown model</p>        
+        <pre>{{ctrl.content}}</pre>
 
       </section>
       <footer>
