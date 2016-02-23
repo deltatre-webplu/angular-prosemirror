@@ -46,10 +46,10 @@ angular.module('markdownProsemirror', ['monospaced.elastic'])
       restrict: 'E',
       require: '?ngModel',
       scope: {
-        ngChange: '&'
+        ngChange: '&',
+        showMarkdown: '=?'
       },
       bindToController: {
-        showMarkdown: '=?',
         model: '=?ngModel',
         modelOptions: '=?ngModelOptions'
       },
@@ -60,10 +60,21 @@ angular.module('markdownProsemirror', ['monospaced.elastic'])
           $timeout($scope.ngChange, 0);
         };
       },
+      link: function(scope, element, attrs, ngModelCtrl) {
+
+        element[0].addEventListener('keydown', function(e) {
+          e = e || window.event;
+          if(e.ctrlKey && (e.which || e.keyCode) === 77) {
+            scope.showMarkdown = !scope.showMarkdown;
+            ngModelCtrl.$commitViewValue();
+            scope.$apply();
+          }
+        });
+
+      },
       controllerAs: 'ctrl',
-      template: `<prosemirror ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="!ctrl.showMarkdown" ng-change="ctrl.change()"></prosemirror>
-      <textarea class="MarkDown" msd-elastic ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="ctrl.showMarkdown" ng-change="ctrl.change()"></textarea>
-      <div class="markdown-prosemirror-toolbar"><span class="filler"></span><button ng-click="ctrl.showMarkdown=!ctrl.showMarkdown">{{ctrl.showMarkdown ? 'toHTML' : 'toMARKDOWN'}}</button></div>`
+      template: `<prosemirror ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="!showMarkdown" ng-change="ctrl.change()"></prosemirror>
+      <textarea class="MarkDown" msd-elastic ng-model="ctrl.model" ng-model-options="ctrl.modelOptions" ng-if="showMarkdown" ng-change="ctrl.change()"></textarea>`
     };
   }
 ])
@@ -97,7 +108,7 @@ angular.module('markdownProsemirror', ['monospaced.elastic'])
       });
 
       ngModel.$render = function() {
-        editor.setContent(ngModel.$viewValue, 'markdown');
+        editor.setContent(ngModel.$viewValue || '', 'markdown');
       };
 
     }
