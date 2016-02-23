@@ -10,9 +10,8 @@ angular.module('demo', ['markdownProsemirror'])
 
     vm.changeList = [];
 
-    vm.change = function(astring, avalue) {
-      console.log(vm.content, astring, avalue);
-      vm.changeList.push('new change');
+    vm.change = function() {
+      vm.changeList.push('new change: ' + vm.content);
     };
 
   });

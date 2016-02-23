@@ -52,7 +52,7 @@ angular.module('markdownProsemirror', ['monospaced.elastic'])
         modelOptions: '=?ngModelOptions',
         ngChange: '&'
       },
-      controller: function($scope) {
+      controller: function() {
         ensureCSSAdded();
         var ctrl = this;
         ctrl.change = function() {

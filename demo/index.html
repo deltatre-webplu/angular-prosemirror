@@ -10,7 +10,7 @@
     <markdown-prosemirror ng-model="ctrl.content"
       ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }"
       show-markdown="ctrl.showMarkdown"
-      ng-change="ctrl.change('paperino', ctrl.content)"></markdown-prosemirror>
+      ng-change="ctrl.change()"></markdown-prosemirror>
     <pre>{{ctrl.content}}</pre>
 
 <ul>
