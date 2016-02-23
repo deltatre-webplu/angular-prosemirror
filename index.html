@@ -34,11 +34,11 @@
         </div>
       </div><!-- end banner -->
 
-    <div class="wrapper" ng-app="demo">
+    <div class="wrapper">
       <nav>
         <ul></ul>
       </nav>
-      <section>
+      <section ng-app="demo">
         <h3>
 <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo</h3>
 
@@ -53,7 +53,7 @@
           <markdown-prosemirror ng-model="ctrl.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></markdown-prosemirror>
         </div>
 
-        <p>Markdown model</p>        
+        <h4>Markdown model</h4>        
         <pre>{{ctrl.content}}</pre>
 
       </section>
