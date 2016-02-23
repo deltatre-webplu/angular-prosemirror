@@ -1,0 +1,26 @@
+{
+  "name": "proNg-mirror",
+  "description": "An angular wrapper for prosemirror",
+  "main": "index.js",
+  "authors": [
+    "WebPLU"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "prosemirror",
+    "markdown",
+    "editor"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "homepage": "https://github.com/deltatre-webplu/angular-prosemirror",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
