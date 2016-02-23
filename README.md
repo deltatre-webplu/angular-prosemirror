@@ -1,5 +1,6 @@
 # proNg-mirror
-An angular,js wrapper for prosemirror 
+
+An angular.js wrapper for prosemirror 
 
 ## Demo
 
@@ -9,7 +10,13 @@ An angular,js wrapper for prosemirror
 
 You can install it via bower or npm and use it with the `markdown-prosemirror` directive:
 
+    <prosemirror ng-model="ctrl.content"></prosemirror>
+    
+or
+
     <markdown-prosemirror ng-model="ctrl.content"></markdown-prosemirror>
+
+`markdown-prosemirror` contains the Prosemirror editor plus a text area for direct markdown editing.
 
 ### Bower
 
@@ -23,7 +30,7 @@ Use it with
     <h1>Markdown-ProseMirror demo page</h1>
     <div ng-app="demo">
       <div ng-controller="demoController as ctrl">
-        <markdown-prosemirror ng-model="ctrl.content"></markdown-prosemirror>
+        <prosemirror ng-model="ctrl.content"></prosemirror>
         <pre>{{ctrl.content}}</pre>
       </div>
     </div>
