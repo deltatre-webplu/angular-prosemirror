@@ -42,7 +42,15 @@
         <h3>
 <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo</h3>
 
-        <p>Bla bla bla</p>
+        <p>Below an angular demo of proNg-mirror</p>
+        
+        <div ng-app="demo">
+          <div ng-controller="demoController as ctrl">
+            <markdown-prosemirror ng-model="ctrl.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></markdown-prosemirror>
+            <pre>{{ctrl.content}}</pre>
+          </div>
+        
+        </div>
 
       </section>
       <footer>
@@ -52,5 +60,15 @@
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script type="text/javascript" src="https://raw.githubusercontent.com/deltatre-webplu/proNg-mirror/master/dist/markdownProsemirror_bundle.js"></script>
+    <script type="text/javascript">
+    angular.module('demo', ['markdownProsemirror'])
+      .controller('demoController', function() {
+        var vm = this;
+        vm.showMarkdown = false;
+        vm.content = 'my **markdown** content';
+      });
+    </script>
   </body>
 </html>
