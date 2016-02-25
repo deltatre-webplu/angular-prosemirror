@@ -43,11 +43,11 @@
 <a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo</h3>
 
         <h4>Prosemirror directive</h4>
-        <prosemirror ng-model="ctrl.content" prosemirror-options="{tooltipMenu: {selectedBlockMenu: true}}" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 400, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></prosemirror>
+        <prosemirror ng-model="ctrl.content" prosemirror-options="{menuBar: {float: true}}" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 400, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></prosemirror>
 
 
         <h4>Markdown Prosemirror directive</h4>
-        <markdown-prosemirror ng-model="ctrl.content" prosemirror-options="{tooltipMenu: {selectedBlockMenu: true}}" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 400, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></markdown-prosemirror>
+        <markdown-prosemirror ng-model="ctrl.content" prosemirror-options="{menuBar: {float: true}}" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 400, 'blur': 0 } }" show-markdown="ctrl.showMarkdown"></markdown-prosemirror>
 
         <h4>Markdown model</h4>        
         <pre>{{ctrl.content}}</pre>
