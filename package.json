@@ -7,8 +7,8 @@
     "build-demo": "watchify ./demo/demo.js --outfile ./demo/demo_bundle.js",
     "demo": "http-server ./demo",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "babel -d dist src",
-    "build-dist": "browserify ./src/main.js --outfile ./dist/markdownProsemirror_bundle.js"
+    "build": "babel --presets es2015 -d dist src",
+    "build-bundle": "browserify ./src/main.js --outfile ./dist/markdownProsemirror_bundle.js"
   },
   "author": "WebPLU",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "babel-core": "^6.5.2",
     "babel-preset-es2015": "^6.5.0",
     "babel-register": "^6.5.2",
+    "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",
     "http-server": "^0.9.0",
@@ -29,12 +30,11 @@
   },
   "browserify": {
     "transform": [
-      "browserify-shim"
+      "browserify-shim",
+      ["babelify", { "presets": "es2015" }]
     ]
   },
-  "browserify-shim": {
-    "angular": "global:angular"
-  },
+  "browserify-shim": {"angular": "global:angular"},
   "repository": {
     "type": "git",
     "url": "https://github.com/deltatre-webplu/proNg-mirror.git"

@@ -1,6 +1,6 @@
 # proNg-mirror
 
-An angular.js wrapper for [ProseMirror](http://prosemirror.net/). 
+An angular.js wrapper for [ProseMirror](http://prosemirror.net/).
 
 ## Demo
 
@@ -11,7 +11,7 @@ An angular.js wrapper for [ProseMirror](http://prosemirror.net/).
 You can install it via bower or npm and use it with the `prosemirror` directive:
 
     <prosemirror ng-model="ctrl.content"></prosemirror>
-    
+
 or
 
     <markdown-prosemirror ng-model="ctrl.content"></markdown-prosemirror>
@@ -22,7 +22,7 @@ Currently the model must be a markdown content.
 ### Bower
 
     bower install proNg-mirror
-    
+
 Use it with
 
     <!doctype html>
@@ -48,7 +48,7 @@ Use it with
 ### Npm
 
     npm install proNg-mirror
-    
+
 And the require it using:
 
     require("proNg-mirror");
@@ -59,12 +59,19 @@ And the require it using:
 Install dependencies
 
     npm install
-  
+
 Compile and watch for changes on source and demo files
 
     npm run build-demo
-  
+
 Run the demo http server
 
     npm run run demo
-  
+
+Create npm distribution
+
+    npm run build
+
+Create bower distribution
+
+    npm run build-bundle
