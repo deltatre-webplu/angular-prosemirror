@@ -1,7 +1,7 @@
 {
   "name": "proNg-mirror",
   "description": "An angular wrapper for prosemirror",
-  "main": "index.js",
+  "main": "./dist/markdownProsemirror_bundle.js",
   "authors": [
     "WebPLU"
   ],
